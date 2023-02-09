@@ -1,30 +1,24 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
 
 function App() {
+  const options = {
+    method: "GET",
+    url: "https://deezerdevs-deezer.p.rapidapi.com/search",
+    params: { q: "emi" },
+    headers: {
+      "X-RapidAPI-Key": "ce8236a612msh73c5ac845457f7ep138b86jsn7266a9a63bc4",
+      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  };
   const fetchSongs = async () => {
-    fetch("https://itunes.apple.com/search?term=radiohead")
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    const res = await axios.request(options);
+    console.log(res);
   };
   fetchSongs();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <h1 className="text-red-500">Hello World</h1>
     </div>
   );
 }
